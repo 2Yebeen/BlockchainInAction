@@ -12,7 +12,7 @@
 ### 📖 차례
 #### [Part 1] 블록체인 프로그래밍 시작하기
 
-1. 블록체인 기초
+1. [블록체인 기초](https://github.com/33bini/Blockchain/tree/main/CHAPTER_1)
 2. 스마트 컨트랙트
 3. 신뢰와 무결성을 위한 기법
 4. 스마트 컨트랙트에서 Dapp으로
