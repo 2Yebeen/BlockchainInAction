@@ -78,3 +78,4 @@ contract BallocV1 {
         assert(winningVoteCount>=3);
     }
 }
+ 
