@@ -74,7 +74,7 @@ constructor(  ) public {
             return false;
         }
         if (highestBidder != address(0)) {
-            // Refund the previously highest bidder.
+            // 이전 최고가 입찰자에게 환불
             depositReturns[highestBidder] += highestBid;
         }
         highestBid = value;
@@ -83,7 +83,7 @@ constructor(  ) public {
     }
 
 
-    // Withdraw a non-winning bid
+    // 낙찰 탈락 입찰 출금, 낙찰 탈락자에 의해 호출된다
     function withdraw() public {   
         uint amount = depositReturns[msg.sender];
         require (amount > 0);
@@ -91,8 +91,7 @@ constructor(  ) public {
         msg.sender.transfer(amount);
         }
     
-    
-    //End the auction and send the highest bid to the beneficiary.
+    // 경매를 종료하고 수혜자에게 최고가 입찰액을 전송, Done 단계에서 호출된다    
     function auctionEnd() public  validPhase(Phase.Done) 
     {
         beneficiary.transfer(highestBid);
