@@ -101,5 +101,45 @@ emit RevealStarted();
 경매의 Reveal 단계를 알리는 RevealStarted
 ~~~
 
+5장에서의 changeState)() 함수 대신에 advancePhase() 함수를 사용한다.
+~~~
+function changeState(Phase x) public onlyBeneficiary {
+    if (x < state) revert();
+        state = x;
+}
+~~~
+수혜자가 명시적으로, 그리고 직선적으로 상태값을 진전시키는 한 잘 작동하지만, 오직 한 번만 사용할 수 있다. 스마트 컨트랙트를 배포하면 블록체인의 변조 부가성 요구 사항으로 인해 덮어쓰기가 안되기 때문에 큰 문제가 될 수 있다.
+
+
+BindAuction.sol의 경우 Init, Bidding, Reveal, Done 단계 이후에 다시 다음 경매를 위해 Init 상태로 순환시켜 이전 버전의 문제를 해결한다.
+
 블록체인 기반 시스템을 설계할 때 스마트 컨트랙트의 변조 불가능성 특성을 잘 파악하고 있어야 한다. 스마트 컨트랙트를 장기 실행 프로그램으로 간주하고 적절한 스테이트 사용을 통해 반복적인 실행을 위한 규정을 설정하는 것이 중요하다.
+
+
+### 2.3 웹 UI를 가진 테스팅
+
+![image](https://user-images.githubusercontent.com/68188768/168421795-c454111e-e3cc-433b-96b3-224ed272b4fb.png)
+
+### 트러플을 사용해 컴파일링하고 배포하기
+
+~~~
+1. 테스트 체인 시작
+    - 개발 머신에 있는 가니쉬 아이콘을 클릭 후 실행하고 QUICKSTART  
+2. 스마트 컨트랙트를 컴파일하고 배포
+    - cd blinedauction-contract
+    - truffle migrate --reste
+3. 웹 서버(Node.js)와 Dapp 웹 컴포넌트 시작
+    - cd ../blindauction-app
+    - npm install
+    - npm start
+4. 메타 마스크가 설치된 웹 브라우저(크롬)을 시작.
+    - localhost:3000 접속
+~~~
+
+- localhost:3000 페이지
+<img width="489" alt="스크린샷 2022-05-14 오후 8 20 34" src="https://user-images.githubusercontent.com/68188768/168423522-b0c94dd8-09a1-4219-ad79-e08a6f917426.png">
+
+Account 1, 2, 3을 초기화 한 후 시작하는 것이 좋다. Account 1은 수혜자용이고, 다른 두 개는 입찰자용이다.
+
+=> 웹 페이지에서 Advance phase 버튼이 보이지 않아서 테스팅 X
 
