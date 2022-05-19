@@ -9,19 +9,19 @@ App = {
     $.getJSON('../proposals.json', function(data) {
       var proposalsRow = $('#proposalsRow');
       var proposalTemplate = $('#proposalTemplate');
-
+​
       for (i = 0; i < data.length; i ++) {
         proposalTemplate.find('.panel-title').text(data[i].name);
         proposalTemplate.find('img').attr('src', data[i].picture);
         proposalTemplate.find('.btn-vote').attr('data-id', data[i].id);
-
+​
         proposalsRow.append(proposalTemplate.html());
         App.names.push(data[i].name);
       }
     });
     return App.initWeb3();
   },
-
+​
   initWeb3: function() {
         // Is there is an injected web3 instance?
     if (typeof web3 !== 'undefined') {
@@ -31,19 +31,20 @@ App = {
       App.web3Provider = new Web3.providers.HttpProvider(App.url);
     }
     web3 = new Web3(App.web3Provider);
-
+​
     ethereum.enable();
-
+​
     App.populateAddress();
     return App.initContract();
   },
-
+​
   initContract: function() {
       $.getJSON('Ballot.json', function(data) {
     // Get the necessary contract artifact file and instantiate it with truffle-contract
     var voteArtifact = data;
+    console.log(voteArtifact);
     App.contracts.vote = TruffleContract(voteArtifact);
-
+​
     // Set the provider for our contract
     App.contracts.vote.setProvider(App.web3Provider);
     
@@ -51,13 +52,17 @@ App = {
     return App.bindEvents();
   });
   },
-
+​
   bindEvents: function() {
     $(document).on('click', '.btn-vote', App.handleVote);
     $(document).on('click', '#win-count', App.handleWinner);
-    $(document).on('click', '#register', function(){ var ad = $('#enter_address').val(); App.handleRegister(ad); });
+    $(document).on('click', '#register', function(){
+      var ad = $('#enter_address').val();
+      console.log('event occur', ad);
+      App.handleRegister(ad);
+    });
   },
-
+​
   populateAddress : function(){
     new Web3(new Web3.providers.HttpProvider(App.url)).eth.getAccounts((err, accounts) => {
       jQuery.each(accounts,function(i){
@@ -68,12 +73,14 @@ App = {
       });
     });
   },
-
+​
   getChairperson : function(){
-    App.contracts.vote.deployed().then(function(instance) {
+    App.contracts.vote.deployed()
+    .then(function(instance) {
       return instance;
     }).then(function(result) {
       App.chairPerson = result.constructor.currentProvider.selectedAddress.toString();
+      console.log(App.chairPerson);
       App.currentAccount = web3.eth.coinbase;
       if(App.chairPerson != App.currentAccount){
         jQuery('#address_div').css('display','none');
@@ -84,36 +91,46 @@ App = {
       }
     })
   },
-
+​
   handleRegister: function(addr){
-
+​
     var voteInstance;
-    App.contracts.vote.deployed().then(function(instance) {
-      voteInstance = instance;
-      return voteInstance.register(addr);
-    }).then(function(result, err){
+    console.log(addr);
+    web3.eth.getAccounts(function(error, accounts) {
+      var account = accounts[0];
+      App.contracts.vote.deployed()
+      .then(function(instance) {
+        console.log(instance);
+        voteInstance = instance;
+        console.log(voteInstance.register);
+        console.log(account);
+        return voteInstance.register(addr, {from : account});
+      })
+      .then(function(result, err){
+        console.log(err);
         if(result){
             if(parseInt(result.receipt.status) == 1)
-            alert(addr + " registration done successfully")
+              alert(addr + " registration done successfully")
             else
-            alert(addr + " registration not done successfully due to revert")
+              alert(addr + " registration not done successfully due to revert")
         } else {
-            alert(addr + " registration failed")
+          alert(addr + " registration failed")
         }   
+      });
     });
-},
-
+  },
+​
   handleVote: function(event) {
     event.preventDefault();
     var proposalId = parseInt($(event.target).data('id'));
     var voteInstance;
-
+​
     web3.eth.getAccounts(function(error, accounts) {
       var account = accounts[0];
-
+      console.log(account);
       App.contracts.vote.deployed().then(function(instance) {
         voteInstance = instance;
-
+​
         return voteInstance.vote(proposalId, {from: account});
       }).then(function(result, err){
             if(result){
@@ -128,7 +145,7 @@ App = {
         });
     });
   },
-
+​
   handleWinner : function() {
     console.log("To get winner");
     var voteInstance;
@@ -143,7 +160,7 @@ App = {
     })
   }
 };
-
+​
 $(function() {
   $(window).load(function() {
     App.init();
