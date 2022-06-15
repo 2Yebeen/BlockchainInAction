@@ -1,0 +1,185 @@
+{
+  "contractName": "Sample",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{},\"notice\":\"The Sample contract does this and that...\"}},\"settings\":{\"compilationTarget\":{\"/Users/yebeen/Desktop/Blockchain/CHAPTER_8/BlindAuction-Dapp-Infura/Beneficiary/auction-contract/contracts/Sample.sol\":\"Sample\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/yebeen/Desktop/Blockchain/CHAPTER_8/BlindAuction-Dapp-Infura/Beneficiary/auction-contract/contracts/Sample.sol\":{\"keccak256\":\"0x728c9ce6fb469cf39ca014c6826c95870076e1dbb7d560837ea80005fad4aebe\",\"urls\":[\"bzz-raw://678c4e2118cfd4e2dde3d89a6897e3dde5783b8444755c1ec0f8eb8da1ed9265\",\"dweb:/ipfs/QmQQye55X2B8SHaH1JfgpfNFLo14ZcWbcugx8P382BxDbY\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158204ec272d3726b3faa071a58fec76891c1b79a8457caabd4e3517edb460faf0dbb64736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158204ec272d3726b3faa071a58fec76891c1b79a8457caabd4e3517edb460faf0dbb64736f6c63430005100032",
+  "sourceMap": "78:47:1:-;;;100:23;8:9:-1;5:2;;;30:1;27;20:12;5:2;100:23:1;78:47;;;;;;",
+  "deployedSourceMap": "78:47:1:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * The Sample contract does this and that...\n */\ncontract Sample {\n    constructor() public {}\n}\n",
+  "sourcePath": "/Users/yebeen/Desktop/Blockchain/CHAPTER_8/BlindAuction-Dapp-Infura/Beneficiary/auction-contract/contracts/Sample.sol",
+  "ast": {
+    "absolutePath": "/Users/yebeen/Desktop/Blockchain/CHAPTER_8/BlindAuction-Dapp-Infura/Beneficiary/auction-contract/contracts/Sample.sol",
+    "exportedSymbols": {
+      "Sample": [
+        63
+      ]
+    },
+    "id": 64,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "The Sample contract does this and that...",
+        "fullyImplemented": true,
+        "id": 63,
+        "linearizedBaseContracts": [
+          63
+        ],
+        "name": "Sample",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 61,
+              "nodeType": "Block",
+              "src": "121:2:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 62,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "111:2:1"
+            },
+            "returnParameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:1"
+            },
+            "scope": 63,
+            "src": "100:23:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 64,
+        "src": "78:47:1"
+      }
+    ],
+    "src": "0:126:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/yebeen/Desktop/Blockchain/CHAPTER_8/BlindAuction-Dapp-Infura/Beneficiary/auction-contract/contracts/Sample.sol",
+    "exportedSymbols": {
+      "Sample": [
+        63
+      ]
+    },
+    "id": 64,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "The Sample contract does this and that...",
+        "fullyImplemented": true,
+        "id": 63,
+        "linearizedBaseContracts": [
+          63
+        ],
+        "name": "Sample",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 61,
+              "nodeType": "Block",
+              "src": "121:2:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 62,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "111:2:1"
+            },
+            "returnParameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:1"
+            },
+            "scope": 63,
+            "src": "100:23:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 64,
+        "src": "78:47:1"
+      }
+    ],
+    "src": "0:126:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "4447": {
+      "events": {},
+      "links": {},
+      "address": "0xf204a4ef082f5c04bb89f7d5e6568b796096735a",
+      "transactionHash": "0x2151ea2f758b0a3e3bd12c3d8ce330656c7a7ac42484d23aba822d0d27c63f1a"
+    }
+  },
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2022-06-02T05:44:28.152Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "The Sample contract does this and that..."
+  }
+}
